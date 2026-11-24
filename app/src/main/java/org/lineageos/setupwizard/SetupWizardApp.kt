@@ -59,7 +59,7 @@ class SetupWizardApp : Application() {
         handler.postDelayed(radioTimeoutRunnable, RADIO_READY_TIMEOUT.toLong())
         if (SetupWizardUtils.hasGMS(this)) {
             SetupWizardUtils.disableHome(this)
-            if (SetupWizardUtils.isOwner()) {
+            if (SetupWizardUtils.isOwner(this)) {
                 Settings.Global.putInt(contentResolver, Settings.Global.ASSISTED_GPS_ENABLED, 1)
             }
         }

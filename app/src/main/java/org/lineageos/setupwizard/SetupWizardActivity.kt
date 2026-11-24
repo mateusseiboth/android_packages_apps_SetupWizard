@@ -29,7 +29,7 @@ class SetupWizardActivity : AppCompatActivity() {
         SetupWizardUtils.enableGesturalNavigation(this)
         val scriptUri =
             when {
-                SetupWizardUtils.isOwner() -> R.string.lineage_wizard_script_uri
+                SetupWizardUtils.isOwner(this) -> R.string.lineage_wizard_script_uri
                 SetupWizardUtils.isManagedProfile(this) ->
                     R.string.lineage_wizard_script_managed_profile_uri
                 else -> R.string.lineage_wizard_script_user_uri

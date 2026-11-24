@@ -181,7 +181,7 @@ abstract class BaseSetupWizardActivity : AppCompatActivity() {
         get() = footerBarMixin?.primaryButtonView
 
     protected fun onSetupStart() {
-        if (SetupWizardUtils.isOwner()) {
+        if (SetupWizardUtils.isOwner(this)) {
             tryEnablingWifi()
         }
     }

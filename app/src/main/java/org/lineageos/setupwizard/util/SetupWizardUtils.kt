@@ -98,7 +98,16 @@ object SetupWizardUtils {
         return !featureHidden
     }
 
-    fun isOwner(): Boolean = UserHandle.myUserId() == 0
+    /** Whether this user sets up the device, not only itself (see [DeviceSetupUser]). */
+    fun isOwner(context: Context): Boolean =
+        DeviceSetupUser.isDeviceSetupUser(
+            userId = UserHandle.myUserId(),
+            headlessSystemUserMode = UserManager.isHeadlessSystemUserMode(),
+            deviceProvisioned = isDeviceProvisioned(context),
+        )
+
+    private fun isDeviceProvisioned(context: Context): Boolean =
+        Settings.Global.getInt(context.contentResolver, Settings.Global.DEVICE_PROVISIONED, 0) != 0
 
     fun isManagedProfile(context: Context): Boolean =
         context.getSystemService(UserManager::class.java).isManagedProfile()

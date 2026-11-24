@@ -31,7 +31,7 @@ class NetworkSetupActivity : SubBaseActivity() {
             return
         }
 
-        if (SetupWizardUtils.isOwner()) {
+        if (SetupWizardUtils.isOwner(this)) {
             tryEnablingWifi()
         }
 
